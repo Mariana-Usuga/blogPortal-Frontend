@@ -1,0 +1,57 @@
+/* user-profile.component.scss */
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.user-profile {
+  max-width: 400px;
+  margin: 20px auto 0;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;  ;
+  text-align: center;
+
+  .profile-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    textarea {
+      width: 80%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+  }
+
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #0056b3;
+    }
+  }
+}
+
+.icon-pencil{
+  margin-left: 10px;
+}

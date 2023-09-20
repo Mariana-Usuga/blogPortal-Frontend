@@ -1,0 +1,62 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.blog-detail{
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px; 
+
+ 
+}
+
+.blog-detail-title{
+  font-weight: bolder;
+  font-size: 40px;
+}
+
+.blog-detail-content{
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.comments-title {
+  font-size: 18px; /* Tamaño de fuente del subtítulo */
+  margin-top: 20px; /* Margen superior para separar el subtítulo de la entrada de comentarios */
+}
+
+.comments-divider {
+  border-top: 1px solid #ccc; /* Línea divisoria con color gris claro */
+  margin-top: 10px; /* Margen superior para separar la línea divisoria de los comentarios */
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+}
+
+.comment-form .form-group {
+  width: 100%;
+  margin-bottom: 10px; /* Espacio entre el textarea y el botón */
+}
+
+.comment-form .sendComment {
+  align-self: flex-end; /* Colocar el botón a la derecha */
+}
+
+.textarea-comment{
+  width: 100%;
+}
+
+button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}

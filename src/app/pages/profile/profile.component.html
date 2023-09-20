@@ -1,0 +1,29 @@
+<!-- user-profile.component.html -->
+<div class="user-profile">
+  <div class="profile-title">Perfil</div>
+  <form (submit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" [(ngModel)]="user.name" name="name" required [disabled]="!isEditingName">
+      <span class="icon-pencil" *ngIf="!isEditingName" (click)="toggleEditing('name')">
+        <i class="fa fa-pencil"></i>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" [(ngModel)]="user.email" name="email" required [disabled]="!isEditingEmail">
+      <span class="icon-pencil" *ngIf="!isEditingEmail" (click)="toggleEditing('email')">
+        <i class="fa fa-pencil"></i>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" [(ngModel)]="user.password" name="password" required 
+      [disabled]="!isEditingPassword">
+      <span class="icon-pencil" *ngIf="!isEditingPassword" (click)="toggleEditing('password')">
+        <i class="fa fa-pencil"></i>
+      </span>
+    </div>
+    <button type="submit">Guardar</button>
+  </form>
+</div>

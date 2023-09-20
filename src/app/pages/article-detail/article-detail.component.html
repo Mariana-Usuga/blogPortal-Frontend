@@ -1,0 +1,24 @@
+<div class="blog-detail">
+  <div class="blog-detail-title">{{ blogDetails?.title }}</div>
+  <p class="blog-detail-content">{{ blogDetails?.content }}</p>
+
+  <div class="comments-divider">{{blogDetails.comments.length}} Comentarios</div> <!-- Línea divisoria -->
+
+  <form [formGroup]="commentForm" (ngSubmit)="submitComment()" class="comment-form">
+    <div class="form-group">
+        <textarea
+        id="content"
+        formControlName="content"
+        class="textarea-comment"
+        rows="3"
+      ></textarea>
+    </div>
+    <button type="submit" class="sendComment">Enviar</button>
+  </form>
+
+
+    <div *ngFor="let comment of blogDetails?.comments" class="comment">
+      {{ comment?.content }}
+    </div>
+
+</div>

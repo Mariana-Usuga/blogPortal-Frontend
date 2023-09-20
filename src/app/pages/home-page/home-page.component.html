@@ -1,0 +1,14 @@
+<div class="blog-list">
+  <div [routerLink]="['/detail', blog._id]" class="blog-card" *ngFor="let blog of articles;  let i = index">
+    <div class="blog-author">{{ blog.authorId.picture }}</div>
+    <div class="blog-author">{{ blog.authorId.name }}</div>
+
+    <div class="blog-title">{{ blog.title }}</div>
+    <div class="blog-content">{{ blog.content | slice:0:200 }}....</div>
+  </div>
+</div>
+
+<!--<form (ngSubmit)="addComment('6508e3b1a7d5e2685468ea95')" #commentForm="ngForm">
+  <textarea [(ngModel)]="newComment.content" name="content" required></textarea>
+  <button type="submit">Agregar Comentario</button>
+</form>-->

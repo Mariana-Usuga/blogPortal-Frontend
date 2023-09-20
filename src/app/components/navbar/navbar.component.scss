@@ -1,0 +1,82 @@
+/* navbar.component.scss */
+.navbar {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+
+  .navbar-brand {
+    font-size: 24px;
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+  }
+
+  .menu-button {
+    display: none; // Ocultar el botón de menú en tamaños grandes
+    //background: white;
+    border: none;
+    //color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+  }
+
+  .navbar-links {
+    a {
+      margin-right: 10px;
+      text-decoration: none;
+      //color: #fff;
+      cursor: pointer;
+    }
+
+    span {
+      margin-right: 10px;
+    }
+  }
+
+.button-link {
+  display: inline-block;
+  padding: 10px 20px;
+  color: white;
+  text-decoration: none;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.button-link:hover {
+  background-color: white;
+  color: black;
+}
+
+
+  // Estilos para dispositivos pequeños (menos de 768px de ancho)
+  @media screen and (max-width: 768px) {
+    .menu-button {
+      display: block; // Mostrar el botón de menú en tamaños pequeños
+    }    
+
+    .navbar-links {
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background-color: #333;
+      width: 150px;
+      z-index: 1;
+      animation-duration: 0.3s;
+    
+      a {
+        margin: 10px 0;
+      }
+    }
+
+    .show-menu {
+      display: block;
+    }
+    .hide-menu{
+      display: none;
+    }
+  }
+}

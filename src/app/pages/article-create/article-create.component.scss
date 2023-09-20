@@ -1,0 +1,56 @@
+.centered-form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #fff;  ;
+  text-align: center; 
+}
+.centered-form {
+  margin-top: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"],
+  textarea {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+}
+.centered-form label {
+  margin-bottom: 10px;
+}
+
+.centered-form input,
+.centered-form textarea {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.centered-form button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  align-self: flex-end; /* Ubica el botón al lado derecho */
+}
+
+.centered-form button:hover {
+  background-color: #0056b3; /* Cambia el color de fondo al pasar el mouse */
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+}

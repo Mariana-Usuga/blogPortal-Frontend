@@ -1,0 +1,36 @@
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.blog-card {
+  width: 80%;
+  padding: 20px;
+  margin: 20px 0;
+  //border: 1px solid #ddd;
+  //border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.blog-author {
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.blog-title {
+  font-size: 25px;
+  margin: 10px 0;
+  margin-top: 30px;
+  margin-left: 20px;
+  font-weight: bolder;
+}
+
+.blog-content {
+  margin-left: 20px;
+  font-size: 21px;
+  color: #333;
+}
