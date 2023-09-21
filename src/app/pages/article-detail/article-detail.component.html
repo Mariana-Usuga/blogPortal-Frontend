@@ -1,8 +1,8 @@
 <div class="blog-detail">
-  <div class="blog-detail-title">{{ blogDetails?.title }}</div>
-  <p class="blog-detail-content">{{ blogDetails?.content }}</p>
+  <div class="blog-detail-title">{{ blogDetails.title }}</div>
+  <p class="blog-detail-content">{{ blogDetails.content }}</p>
 
-  <div class="comments-divider">{{blogDetails?.comments?.length}} Comentarios</div>
+  <div class="comments-divider">{{blogDetails.comments?.length}} Comentarios</div>
 
   <form [formGroup]="commentForm" (ngSubmit)="submitComment()" class="comment-form">
     <div class="form-group">
