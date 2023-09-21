@@ -12,7 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleCreateComponent } from './pages/article-create/article-create.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { ChangesPasswordComponent } from './components/changes-password/changes-password.component';
+import { ChangesPasswordComponent } from './pages/changes-password/changes-password.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +24,7 @@ import { ChangesPasswordComponent } from './components/changes-password/changes-
     ArticleCreateComponent,
     NavbarComponent,
     ProfileComponent,
-    ChangesPasswordComponent
+    ChangesPasswordComponent,
   ],
   imports: [
     BrowserModule,

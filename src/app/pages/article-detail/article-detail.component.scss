@@ -19,13 +19,13 @@
 }
 
 .comments-title {
-  font-size: 18px; /* Tamaño de fuente del subtítulo */
-  margin-top: 20px; /* Margen superior para separar el subtítulo de la entrada de comentarios */
+  font-size: 18px;
+  margin-top: 20px;
 }
 
 .comments-divider {
-  border-top: 1px solid #ccc; /* Línea divisoria con color gris claro */
-  margin-top: 10px; /* Margen superior para separar la línea divisoria de los comentarios */
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
 }
 
 .comment-form {
@@ -36,11 +36,11 @@
 
 .comment-form .form-group {
   width: 100%;
-  margin-bottom: 10px; /* Espacio entre el textarea y el botón */
+  margin-bottom: 10px;
 }
 
 .comment-form .sendComment {
-  align-self: flex-end; /* Colocar el botón a la derecha */
+  align-self: flex-end;
 }
 
 .textarea-comment{
@@ -72,6 +72,15 @@ button[type="submit"] {
 .content {
   margin: 0;
   padding: 0;
+}
+
+.sendComment{
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  align-self: flex-end;
 }
 
 hr {
