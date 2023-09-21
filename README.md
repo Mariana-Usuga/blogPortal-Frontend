@@ -6,7 +6,7 @@ Portal de blog que brinda a los usuarios la capacidad de publicar, explorar y co
 
 Puedes acceder a este proyecto en línea en la siguiente URL:
 
-[https://capable-bonbon-808f69.netlify.app/]
+https://capable-bonbon-808f69.netlify.app/
 
 ## Configuración de Desarrollo
 
@@ -15,7 +15,7 @@ Sigue estos pasos para configurar y ejecutar este proyecto en tu entorno de desa
 1. Clona este repositorio en tu máquina local usando el siguiente comando:
 
    ```bash
-   git clone https://github.com/tuusuario/tuproyecto.git
+   git clone git@github.com:Mariana-Usuga/blogPortal-Frontend.git
    ```
 
 2. Instalada todas las dependencias
