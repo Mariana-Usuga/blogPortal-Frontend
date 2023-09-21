@@ -17,6 +17,11 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "stylePreprocessorOptions": {
+              "type": "anyComponentStyle",
+              "maximumWarning": "150kb",
+              "maximumError": "150kb"
+            },
             "outputPath": "dist/blog-portal-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
