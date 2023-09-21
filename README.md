@@ -6,7 +6,7 @@ Portal de blog que brinda a los usuarios la capacidad de publicar, explorar y co
 
 Puedes acceder a este proyecto en línea en la siguiente URL:
 
-[https://capable-bonbon-808f69.netlify.app/](URL_en_Linea)
+[https://capable-bonbon-808f69.netlify.app/]
 
 ## Configuración de Desarrollo
 
@@ -20,6 +20,6 @@ Sigue estos pasos para configurar y ejecutar este proyecto en tu entorno de desa
 
 2. Instalada todas las dependencias
 
-```bash
+   ```bash
    npm i
-```
+   ```
