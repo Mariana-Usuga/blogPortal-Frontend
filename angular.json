@@ -52,12 +52,6 @@
               "outputHashing": "all"
             },
             "development": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.prod.ts",
-                  "with": "src/environments/environment.ts"
-                }
-              ],
               "buildOptimizer": false,
               "optimization": false,
               "vendorChunk": true,
@@ -78,7 +72,7 @@
             "production": {
               "browserTarget": "blogPortal-Frontend:build:production"
             },
-            "development": {         
+            "development": {        
               "browserTarget": "blogPortal-Frontend:build:development"
             }
           },

@@ -2,12 +2,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { comment } from 'src/app/model/comment.interface';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentService {
-  private apiUrl = 'http://localhost:8080/api/comment';
+  apiUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -19,6 +20,6 @@ export class CommentService {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
 
-    return this.http.post<comment>(`${this.apiUrl}/${blogId}`, newComment, {headers});
+    return this.http.post<comment>(`${this.apiUrl}/api/comment/${blogId}`, newComment, {headers});
   }
 }

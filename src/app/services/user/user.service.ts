@@ -9,7 +9,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class UserService {
-  //private apiUrl = 'http://localhost:8080/api/user';
   apiUrl = environment.apiUrl; // Utiliza environment.apiUrl
   private valorCompartido = new BehaviorSubject<boolean>(true);
   private userName = new BehaviorSubject<string>('');
@@ -36,6 +35,7 @@ export class UserService {
   }
 
   loginUser(user: userLogin): any{
+    console.log(this.apiUrl)
     return this.http.post<any>(`${this.apiUrl}/auth/local/login`, user);
   }
   
