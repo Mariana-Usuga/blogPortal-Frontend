@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "baseHref": "/blog-portal-frontend/",
+            "baseHref": "blog-portal-frontend/",
             "outputPath": "dist/blog-portal-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
