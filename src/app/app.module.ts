@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ArticleCreateComponent } from './pages/article-create/article-create.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ChangesPasswordComponent } from './components/changes-password/changes-password.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ArticleDetailComponent,
     ArticleCreateComponent,
     NavbarComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChangesPasswordComponent
   ],
   imports: [
     BrowserModule,

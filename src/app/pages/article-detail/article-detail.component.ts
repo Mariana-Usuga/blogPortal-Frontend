@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { article } from 'src/app/model/article.inferces';
+import { comment } from 'src/app/model/comment.interface';
 import { ArticleService } from 'src/app/services/article.service';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -12,7 +14,8 @@ import { UserService } from 'src/app/services/user/user.service';
 })
 export class ArticleDetailComponent {
   blogId: any;
-  blogDetails: any;
+  blogDetails!: article;
+  authorName!: string;
   commentsVisible: boolean[] = [];
   commentForm: FormGroup;
 
@@ -32,10 +35,10 @@ export class ArticleDetailComponent {
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
       this.blogId = params['id'];
-      this.articleService.getArticleById(this.blogId).subscribe((data) => {
+      this.articleService.getArticleById(this.blogId).subscribe((data: article) => {
         this.blogDetails = data;
         //data.comments.reverse();
-        this.blogDetails.comments = data.comments;
+        this.blogDetails.comments = data.comments?.slice().reverse();
         console.log('data ', data)
       });
     });
@@ -45,13 +48,20 @@ export class ArticleDetailComponent {
     if(this.userService.isAuthenticated()){
       if (this.commentForm.valid) {
         const commentContent = this.commentForm.value.content;
-        this.commentService.createComment(this.blogId, commentContent).subscribe((response) => {
-          this.blogDetails = {...this.blogDetails, comments: [response, ...this.blogDetails.comments]}
+        this.commentService.createComment(this.blogId, commentContent).subscribe((response: comment) => {
+          this.userService.getName().subscribe((valor) => {
+            this.authorName = valor
+          })
+          this.blogDetails = {...this.blogDetails, 
+            comments: [{...response, authorId:  {
+              name: this.authorName
+            } }, 
+              ...(this.blogDetails.comments || [])]}
           this.commentForm.reset();
         });
       }
     } else {
-      this.router.navigate(['/login']); 
+      this.router.navigate(['/login'])
     }
     
   }

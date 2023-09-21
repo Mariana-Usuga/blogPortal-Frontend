@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { userLogin } from 'src/app/model/login.interface';
 import { user } from 'src/app/model/user.interface';
@@ -11,37 +12,38 @@ import Swal from 'sweetalert2';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  formData: userLogin = {
-    email: '',
-    password: '',
-  };
+  errorEmailMessage: string = '';
+  errorPasswordMessage: string = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {}
 
+  formUser = this.fb.group({
+    email: ['' , [Validators.required, Validators.email]],
+    password: ['' , Validators.required],
+  });
 
   onSubmit() {
-    this.userService.loginUser(this.formData).subscribe((token: any) => {
+    this.errorEmailMessage = ''
+    this.errorPasswordMessage = ''
+    const user: any = {
+      email: this.formUser.value.email,
+      password: this.formUser.value.password
+    }
+    this.userService.loginUser(user).subscribe((token: any) => {
       console.log('comment ', token)
       localStorage.setItem('token', token.JWT);
-      this.formData = {
-        email: '',
-        password: '',
-      };
-      this.router.navigate(['/']); 
+      if(token.JWT){
+        this.router.navigate(['/']);
+        this.userService.setValor(true);
+        this.formUser.reset()
+      }
     }, (error: any) => {
-      Swal.fire({
-        position: 'top-end',
-        icon: 'error',
-        title: error.error.message,
-        showConfirmButton: false,
-        timer: 2000
-      })
-      this.formData = {
-        email: '',
-        password: '',
-      };
-      console.error('Error en el registro', error.message);
-      console.error('Error en el registro', error.error.message);
+      if(error.error.message === 'User not found'){
+        this.errorEmailMessage = 'Email incorrecto'
+      }
+      if(error.error.message === 'Invalid password'){
+        this.errorPasswordMessage = 'Contraseña incorrecta'
+      }
     });
   }
 }

@@ -1,29 +1,51 @@
 <!-- user-profile.component.html -->
 <div class="user-profile">
   <div class="profile-title">Perfil</div>
-  <form (submit)="onSubmit()">
+  <form [formGroup]="formUser" (submit)="onSubmit()">
     <div class="form-group">
       <label for="name">Nombre:</label>
-      <input type="text" id="name" [(ngModel)]="user.name" name="name" required [disabled]="!isEditingName">
+      <input type="text" id="name" formControlName="name" name="name" required [disabled]="!isEditingName">
       <span class="icon-pencil" *ngIf="!isEditingName" (click)="toggleEditing('name')">
         <i class="fa fa-pencil"></i>
       </span>
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" [(ngModel)]="user.email" name="email" required [disabled]="!isEditingEmail">
+      <input type="email" id="email" formControlName="email" name="email" required [disabled]="!isEditingEmail">
       <span class="icon-pencil" *ngIf="!isEditingEmail" (click)="toggleEditing('email')">
+        <i class="fa fa-pencil"></i>
+      </span>
+      <div [hidden]="email.valid || email.pristine" class="custom-alert">
+        <span *ngIf="email.errors?.['email']">
+          Email invalido
+        </span>
+      </div>
+    </div>
+    <p>¿Quieres editar tu contraseña? <a routerLink="/changePassword">Editar</a></p>
+    <button type="submit" class="btn-submit-profile"  
+    [disabled]="formUser.invalid">Guardar</button>
+    <button type="button" class="btn-submit-cancel" (click)="onCancel()">Cancelar</button>
+  </form>
+</div>
+
+<!--<div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" formControlName="password" name="password" required 
+      [disabled]="!isEditingPassword">
+      <span *ngIf="!isEditingPassword" (click)="toggleEditing('password')">
         <i class="fa fa-pencil"></i>
       </span>
     </div>
     <div class="form-group">
-      <label for="password">Contraseña:</label>
-      <input type="password" id="password" [(ngModel)]="user.password" name="password" required 
+      <label for="password">Confirmar Contraseña:</label>
+      <input type="password" id="password" formControlName="confirmPassword" name="password" required 
       [disabled]="!isEditingPassword">
-      <span class="icon-pencil" *ngIf="!isEditingPassword" (click)="toggleEditing('password')">
+      <span *ngIf="!isEditingPassword" (click)="toggleEditing('password')">
         <i class="fa fa-pencil"></i>
       </span>
+      <div [hidden]="confirmPassword.valid || confirmPassword.pristine" class="alert alert-danger">
+        <div *ngIf="confirmPassword.errors?.['confirmedValidator']">
+          Contraseñas no coinciden.
+        </div>
     </div>
-    <button type="submit">Guardar</button>
-  </form>
-</div>
+    </div>-->

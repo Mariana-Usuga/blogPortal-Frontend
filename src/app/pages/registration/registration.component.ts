@@ -1,8 +1,9 @@
-import { Component, ViewChild } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { user } from 'src/app/model/user.interface';
 import { UserService } from 'src/app/services/user/user.service';
+import { ConfirmedValidator } from './password';
 
 @Component({
   selector: 'app-registration',
@@ -12,7 +13,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class RegistrationComponent {
 
   constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {}
-
+  
   get name(){
     return this.formUser.get('name') as FormControl
   }
@@ -29,36 +30,29 @@ export class RegistrationComponent {
     return this.formUser.get('confirmPassword') as FormControl
   }
 
-  matchPasswords(control: AbstractControl): { [key: string]: boolean } | null {
-    const password = control.get('password')?.value;
-    const conPassword = control.get('confirmPassword')?.value;
-  
-    if (password === conPassword) {
-      return null; // Las cxontraseñas coinciden, no hay error
-    } else {
-      return { 'passwordMismatch': true }; // Las contraseñas no coinciden, se produce un error
-    }
-  }
-  
-
   formUser = this.fb.group({
-    'name': ['', Validators.required],
-    'email': ['', Validators.required, Validators.email],
-    'password': ['', Validators.required],
-    'confirmPassword': ['', [Validators.required, this.matchPasswords.bind(this)]],
+    name: ['', Validators.required],
+    email: ['' , [Validators.required, Validators.email]],
+    password: ['' , [Validators.required, Validators.minLength(8)]],
+    confirmPassword: ['' , Validators.required],
+  },
+  { 
+    validator: ConfirmedValidator('password', 'confirmPassword')
   });
 
   onSubmit() {
-    console.log('this ', this.formUser.value)
-    /*this.userService.postUser(this.formUser?.value).subscribe((user) => {
+    const newUser: user = {
+      name: this.name.value,
+      email: this.email.value,
+      password: this.password.value
+    }
+    this.userService.postUser(newUser).subscribe((user: user) => {
       console.log('comment ', user)
-      //this.newUser.content = '';
       if(user){
         this.router.navigate(['/login']); 
       }
     }, (error) => {
-      // Manejar errores, por ejemplo, mostrar un mensaje de error.
       console.error('Error en el registro', error);
-    });*/
+    });
   }
 }

@@ -1,4 +1,5 @@
 .login-container {
+  margin-top: 20px;
   max-width: 300px;
   margin: 0 auto;
   padding: 20px;
@@ -44,6 +45,16 @@
     background-color: #ccc;
     color: #999;
     cursor: not-allowed;
+  }
+  
+  .custom-alert {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb;
   }
 }
 

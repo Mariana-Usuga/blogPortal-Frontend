@@ -60,3 +60,23 @@ button[type="submit"] {
     background-color: #0056b3;
   }
 }
+.comment {
+  margin-bottom: 20px;
+}
+
+.author {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.content {
+  margin: 0;
+  padding: 0;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}

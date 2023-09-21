@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { comment } from 'src/app/model/comment.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +11,14 @@ export class CommentService {
 
   constructor(private http: HttpClient) { }
 
-   createComment(blogId: string, content: string): Observable<Comment> {
+   createComment(blogId: string, content: string): Observable<comment> {
     const newComment = { content };
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im1hcmlhbmEyQGdtYWlsLmNvbSIsIm5hbWUiOiJtYXJpYW5hMiIsIl9pZCI6IjY1MDhlNWFjMTkyNzJmZjVhMGQ4NDE4MSIsImlhdCI6MTY5NTEzNDU4OSwiZXhwIjoxNjk1MTQ1Mzg5fQ.sxEAPRNs4toDRoehu3T0pavD5sSke8AR9R0d_DNSxqc`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
 
-    return this.http.post<Comment>(`${this.apiUrl}/${blogId}`, newComment, {headers});
+    return this.http.post<comment>(`${this.apiUrl}/${blogId}`, newComment, {headers});
   }
 }

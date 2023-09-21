@@ -1,4 +1,4 @@
-import { Component, ElementRef } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef } from '@angular/core';
 import { UserService } from 'src/app/services/user/user.service';
 import { user } from '../../model/user.interface'
 import { Router } from '@angular/router';
@@ -11,20 +11,22 @@ import { Router } from '@angular/router';
 export class NavbarComponent {
   isLoggedIn = false;
   username: any;
-  isMenuOpen = false; // Variable para controlar si el menú desplegable está abierto o cerrado
+  isMenuOpen = false;
+  valor: string = '';
 
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService, private router: Router, private cdRef: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.isLoggedIn = this.userService.isAuthenticated();
 
-    if (this.isLoggedIn) {
-      console.log('entra en is lo  ')
+    this.userService.getValor().subscribe((valor) => {
       this.userService.getUsername().subscribe((user: user) => {
-        console.log('user ', user)
         this.username = user.name
+        this.userService.setName(this.username)
       });
-    }
+      this.isLoggedIn = valor;
+      this.cdRef.detectChanges(); 
+    });
   }
 
   toggleMenu() {

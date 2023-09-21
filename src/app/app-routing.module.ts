@@ -6,6 +6,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { ArticleDetailComponent } from './pages/article-detail/article-detail.component';
 import { ArticleCreateComponent } from './pages/article-create/article-create.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { ChangesPasswordComponent } from './components/changes-password/changes-password.component';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: ArticleDetailComponent },
   { path: 'createArticle', component: ArticleCreateComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'changePassword', component: ChangesPasswordComponent },
 ];
 
 @NgModule({
