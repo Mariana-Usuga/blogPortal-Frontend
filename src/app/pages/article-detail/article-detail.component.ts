@@ -33,6 +33,7 @@ export class ArticleDetailComponent {
   }
 
   ngOnInit(): void {
+    console.log('entra en ng')
     this.route.params.subscribe((params: any) => {
       this.blogId = params['id'];
       this.articleService.getArticleById(this.blogId).subscribe((data: article) => {

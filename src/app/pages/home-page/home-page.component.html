@@ -4,9 +4,9 @@
     <!--<div class="blog-author">{{ blog.authorId?.picture }}</div>-->
       <div class="blog-author">{{ blog.authorId.name }}</div>
 
-    <div  [routerLink]="['/detail', blog._id]">
-    <div class="blog-title">{{ blog.title }}</div>
-  </div>
+    <div  [routerLink]="['/detail', blog._id]">--->
+        <div class="blog-title">{{ blog.title }}</div>
+    </div>
 
     <div class="blog-content">{{ blog.content | slice:0:200 }}....</div>
   </div>

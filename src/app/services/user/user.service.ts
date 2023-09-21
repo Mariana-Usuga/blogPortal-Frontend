@@ -3,12 +3,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { userLogin } from 'src/app/model/login.interface';
 import { user } from 'src/app/model/user.interface';
+import { environment } from 'src/enviroments/environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/api/user';
+  //private apiUrl = 'http://localhost:8080/api/user';
+  apiUrl = environment.apiUrl; // Utiliza environment.apiUrl
   private valorCompartido = new BehaviorSubject<boolean>(true);
   private userName = new BehaviorSubject<string>('');
 
@@ -21,23 +23,23 @@ export class UserService {
   }
 
   postUser(newUser: user): Observable<user>{
-    return this.http.post<user>(this.apiUrl, newUser);
+    return this.http.post<user>(`${this.apiUrl}/api/user`, newUser);
   }
 
   updateUser(id: any, newUser: user): Observable<user>{
-    return this.http.patch<user>(`api/user/${id}`, newUser);
+    return this.http.patch<user>(`${this.apiUrl}/api/user/${id}`, newUser);
   }
 
   updateUserPassword(id: any, newUser: user): Observable<user>{
-    return this.http.patch<user>(`api/user/password/${id}`, newUser);
+    return this.http.patch<user>(`${this.apiUrl}/api/user/password/${id}`, newUser);
   }
 
   loginUser(user: userLogin): any{
-    return this.http.post<any>('http://localhost:8080/auth/local/login', user);
+    return this.http.post<any>(`${this.apiUrl}/auth/local/login`, user);
   }
-
+  
   verifyPassword(user: any): any{
-    return this.http.post<any>('http://localhost:8080/auth/local/verify-password', user);
+    return this.http.post<any>(`${this.apiUrl}/auth/local/verify-password`, user);
   }
 
   getUsername(): Observable<user>{
@@ -46,7 +48,7 @@ export class UserService {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     });
     
-    return this.http.get<user>(`${this.apiUrl}/me`, {headers} );
+    return this.http.get<user>(`${this.apiUrl}/api/user/me`, {headers} );
   }
 
   logout() {
