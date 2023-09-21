@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent {
   isEditingName = false;
@@ -16,33 +16,35 @@ export class ProfileComponent {
   isEditingPassword = false;
   originalUser!: any;
 
-  constructor(private userService: UserService, private router: Router, private fb: FormBuilder) {}
+  constructor(private userService: UserService, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.userService.getUsername().subscribe((res: any) => {
       this.originalUser = res;
-      this.formUser.patchValue(res)
+      this.formUser.patchValue(res);
     });
   }
 
-  get name(){
-    return this.formUser.get('name') as FormControl
+  get name() {
+    return this.formUser.get('name') as FormControl;
   }
 
-  get email(){
-    return this.formUser.get('email') as FormControl
+  get email() {
+    return this.formUser.get('email') as FormControl;
   }
 
-  get _id(){
-    return this.formUser.get('_id') as FormControl
+  get _id() {
+    return this.formUser.get('_id') as FormControl;
   }
 
   formUser = this.fb.group({
-    '_id': [{ value: ''}],
-    'name': [{ value: '', disabled: true }, Validators.required],
-    'email': [{ value: '', disabled: true }, [Validators.required, Validators.email]],
+    _id: [{ value: '' }],
+    name: [{ value: '', disabled: true }, Validators.required],
+    email: [
+      { value: '', disabled: true },
+      [Validators.required, Validators.email],
+    ],
   });
-
 
   toggleEditing(fieldName: string) {
     if (fieldName === 'name') {
@@ -58,23 +60,28 @@ export class ProfileComponent {
     const updateUser = {
       name: this.name.value,
       email: this.email.value,
-    }
-    this.userService.updateUser(this._id.value, updateUser).subscribe((user: any) => {
-      if(user){
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'Editado con exito!!',
-          showConfirmButton: false,
-          timer: 2000
-        })
-      }
-      this.formUser.patchValue(user);
-      this.isEditingName = false;
-      this.isEditingEmail = false;
-    }, (error) => {
-      console.error('Error en el registro', error);
-    });
+    };
+    this.userService.updateUser(this._id.value, updateUser).subscribe(
+      (user: any) => {
+        if (user) {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Editado con exito!!',
+            showConfirmButton: false,
+            timer: 2000,
+          });
+        }
+        this.formUser.patchValue(user);
+        this.name.disable();
+        this.email.disable();
+        this.isEditingName = false;
+        this.isEditingEmail = false;
+      },
+      (error) => {
+        console.error('Error en el registro', error);
+      },
+    );
   }
 
   onCancel() {

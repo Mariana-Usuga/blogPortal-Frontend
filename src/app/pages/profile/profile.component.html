@@ -3,26 +3,55 @@
   <form [formGroup]="formUser" (submit)="onSubmit()">
     <div class="form-group">
       <label for="name">Nombre:</label>
-      <input type="text" id="name" formControlName="name" name="name" required [disabled]="!isEditingName">
-      <span class="icon-pencil" *ngIf="!isEditingName" (click)="toggleEditing('name')">
+      <input
+        type="text"
+        id="name"
+        formControlName="name"
+        name="name"
+        required
+        [disabled]="!isEditingName"
+      />
+      <span
+        class="icon-pencil"
+        *ngIf="!isEditingName"
+        (click)="toggleEditing('name')"
+      >
         <i class="fa fa-pencil"></i>
       </span>
     </div>
     <div class="form-group">
       <label for="email">Email:</label>
-      <input type="email" id="email" formControlName="email" name="email" required [disabled]="!isEditingEmail">
-      <span class="icon-pencil" *ngIf="!isEditingEmail" (click)="toggleEditing('email')">
+      <input
+        type="email"
+        id="email"
+        formControlName="email"
+        name="email"
+        required
+        [disabled]="!isEditingEmail"
+      />
+      <span
+        class="icon-pencil"
+        *ngIf="!isEditingEmail"
+        (click)="toggleEditing('email')"
+      >
         <i class="fa fa-pencil"></i>
       </span>
       <div [hidden]="email.valid || email.pristine" class="custom-alert">
-        <span *ngIf="email.errors?.['email']">
-          Email invalido
-        </span>
+        <span *ngIf="email.errors?.['email']"> Email invalido </span>
       </div>
     </div>
-    <p>¿Quieres editar tu contraseña? <a routerLink="/changePassword">Editar</a></p>
-    <button type="submit" class="btn-submit-profile"  
-    [disabled]="formUser.invalid">Guardar</button>
-    <button type="button" class="btn-submit-cancel" (click)="onCancel()">Cancelar</button>
+    <p>
+      ¿Quieres editar tu contraseña? <a routerLink="/changePassword">Editar</a>
+    </p>
+    <button
+      type="submit"
+      class="btn-submit-profile"
+      [disabled]="formUser.invalid"
+    >
+      Guardar
+    </button>
+    <button type="button" class="btn-submit-cancel" (click)="onCancel()">
+      Cancelar
+    </button>
   </form>
 </div>

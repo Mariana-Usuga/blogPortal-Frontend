@@ -3,14 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { article } from 'src/app/model/article.inferces';
 import { comment } from 'src/app/model/comment.interface';
-import { ArticleService } from 'src/app/services/article.service';
+import { params } from 'src/app/model/params.interface';
+import { ArticleService } from 'src/app/services/article/article.service';
 import { CommentService } from 'src/app/services/comment/comment.service';
 import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-article-detail',
   templateUrl: './article-detail.component.html',
-  styleUrls: ['./article-detail.component.scss']
+  styleUrls: ['./article-detail.component.scss'],
 })
 export class ArticleDetailComponent {
   blogId: any;
@@ -25,7 +26,7 @@ export class ArticleDetailComponent {
     private userService: UserService,
     private commentService: CommentService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
   ) {
     this.commentForm = this.formBuilder.group({
       content: ['', Validators.required],
@@ -33,37 +34,44 @@ export class ArticleDetailComponent {
   }
 
   ngOnInit(): void {
-    console.log('entra en ng')
-    this.route.params.subscribe((params: any) => {
+    this.route.params.subscribe((params: params) => {
       this.blogId = params['id'];
-      this.articleService.getArticleById(this.blogId).subscribe((data: article) => {
-        this.blogDetails = data;
-        console.log('data ', data.comments)
-        this.blogDetails.comments = data.comments?.slice().reverse();
-      });
+      this.articleService
+        .getArticleById(this.blogId)
+        .subscribe((data: article) => {
+          this.blogDetails = data;
+          this.blogDetails.comments = data.comments?.slice().reverse();
+        });
     });
   }
 
   submitComment() {
-    if(this.userService.isAuthenticated()){
+    if (this.userService.isAuthenticated()) {
       if (this.commentForm.valid) {
         const commentContent = this.commentForm.value.content;
-        this.commentService.createComment(this.blogId, commentContent).subscribe((response: comment) => {
-          this.userService.getName().subscribe((valor: any) => {
-            this.authorName = valor
-          })
-          this.blogDetails = {...this.blogDetails, 
-            comments: [{...response, authorId:  {
-              name: this.authorName
-            } }, 
-              ...(this.blogDetails.comments || [])]}
-          this.commentForm.reset();
-          console.log('this.blogDetails ', this.blogDetails)
-        });
+        this.commentService
+          .createComment(this.blogId, commentContent)
+          .subscribe((response: comment) => {
+            this.userService.getName().subscribe((valor: any) => {
+              this.authorName = valor;
+            });
+            this.blogDetails = {
+              ...this.blogDetails,
+              comments: [
+                {
+                  ...response,
+                  authorId: {
+                    name: this.authorName,
+                  },
+                },
+                ...(this.blogDetails.comments || []),
+              ],
+            };
+            this.commentForm.reset();
+          });
       }
     } else {
-      this.router.navigate(['/login'])
+      this.router.navigate(['/login']);
     }
-    
   }
 }

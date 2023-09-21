@@ -1,11 +1,23 @@
 <form (ngSubmit)="createBlog()" #blogForm="ngForm" class="centered-form">
   <label for="title">Título:</label>
-  <input type="text" id="title" name="title" [(ngModel)]="blogData.title" required>
+  <input
+    type="text"
+    id="title"
+    name="title"
+    [(ngModel)]="blogData.title"
+    required
+  />
 
   <label for="content">Contenido:</label>
-  <textarea type="text" id="content" name="content" [(ngModel)]="blogData.content" required></textarea>
+  <textarea
+    type="text"
+    id="content"
+    name="content"
+    [(ngModel)]="blogData.content"
+    required
+  ></textarea>
 
-<div class="button-container">
-    <button type="submit">Crear Blog</button>
+  <div class="button-container">
+    <button type="submit" class="btn-submit">Crear Blog</button>
   </div>
 </form>

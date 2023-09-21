@@ -1,4 +1,3 @@
-<!-- navbar.component.html -->
 <nav class="navbar">
   <div class="navbar-brand">
     <a routerLink="/">Blogs</a>
@@ -6,7 +5,10 @@
   <button class="menu-button" (click)="toggleMenu()">
     <i class="fa fa-bars"></i>
   </button>
-  <div class="navbar-links" [ngClass]="{ 'show-menu': isMenuOpen, 'hide-menu': !isMenuOpen }">
+  <div
+    class="navbar-links"
+    [ngClass]="{ 'show-menu': isMenuOpen, 'hide-menu': !isMenuOpen }"
+  >
     <ng-container *ngIf="!isLoggedIn; else userLinks">
       <a routerLink="/login" class="button-link">Iniciar Sesión</a>
       <a routerLink="/register" class="button-link">Registrarse</a>

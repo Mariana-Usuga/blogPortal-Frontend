@@ -2,18 +2,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { userLogin } from 'src/app/model/login.interface';
+import { token } from 'src/app/model/token.interface';
 import { user } from 'src/app/model/user.interface';
+import { verifyPassword } from 'src/app/model/verifyPassword.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
-  apiUrl = environment.apiUrl; // Utiliza environment.apiUrl
+  apiUrl = environment.apiUrl;
   private valorCompartido = new BehaviorSubject<boolean>(true);
   private userName = new BehaviorSubject<string>('');
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
@@ -21,35 +23,41 @@ export class UserService {
     return !!token;
   }
 
-  postUser(newUser: user): Observable<user>{
-    console.log(this.apiUrl)
+  postUser(newUser: user): Observable<user> {
+    console.log(this.apiUrl);
     return this.http.post<user>(`${this.apiUrl}/api/user`, newUser);
   }
 
-  updateUser(id: any, newUser: user): Observable<user>{
+  updateUser(id: string, newUser: user): Observable<user> {
     return this.http.put<user>(`${this.apiUrl}/api/user/${id}`, newUser);
   }
 
-  updateUserPassword(id: any, newUser: user): Observable<user>{
-    return this.http.put<user>(`${this.apiUrl}/api/user/password/${id}`, newUser);
+  updateUserPassword(id: string, newUser: user): Observable<user> {
+    return this.http.put<user>(
+      `${this.apiUrl}/api/user/password/${id}`,
+      newUser,
+    );
   }
 
-  loginUser(user: userLogin): any{
-    console.log(this.apiUrl)
-    return this.http.post<any>(`${this.apiUrl}/auth/local/login`, user);
-  }
-  
-  verifyPassword(user: any): any{
-    return this.http.post<any>(`${this.apiUrl}/auth/local/verify-password`, user);
+  loginUser(user: userLogin): Observable<token> {
+    console.log(this.apiUrl);
+    return this.http.post<token>(`${this.apiUrl}/auth/local/login`, user);
   }
 
-  getUsername(): Observable<user>{
+  verifyPassword(user: userLogin): Observable<verifyPassword> {
+    return this.http.post<verifyPassword>(
+      `${this.apiUrl}/auth/local/verify-password`,
+      user,
+    );
+  }
+
+  getUsername(): Observable<user> {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     });
-    
-    return this.http.get<user>(`${this.apiUrl}/api/user/me`, {headers} );
+
+    return this.http.get<user>(`${this.apiUrl}/api/user/me`, { headers });
   }
 
   logout() {
