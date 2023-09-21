@@ -1,12 +1,18 @@
-/* user-profile.component.scss */
-/*@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+$user-profile-background-color: #fff;
+$user-profile-button-color: #007bff;
+$user-profile-button-hover-color: #0056b3;
+$user-profile-disabled-button-color: #ccc;
+$user-profile-error-background-color: #f8d7da;
+$user-profile-error-text-color: #721c24;
 
 .user-profile {
   max-width: 400px;
   margin: 20px auto 0;
   padding: 20px;
   border-radius: 5px;
-  background-color: #fff;  ;
+  background-color: $user-profile-background-color;
   text-align: center;
 
   .profile-title {
@@ -38,7 +44,7 @@
   }
 
   button[type="submit"] {
-    background-color: #007bff;
+    background-color: $user-profile-button-color;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -47,18 +53,18 @@
     cursor: pointer;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: $user-profile-button-hover-color;
     }
   }
 
-.btn-submit-profile:disabled {
-  background-color: #ccc;
-  color: #999;
-  cursor: not-allowed;
-}
+  .btn-submit-profile:disabled {
+    background-color: $user-profile-disabled-button-color;
+    color: #999;
+    cursor: not-allowed;
+  }
 
-.btn-submit-cancel {
-  background-color: rgb(250, 63, 63);
+  .btn-submit-cancel {
+    background-color: rgb(250, 63, 63);
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -67,22 +73,21 @@
     cursor: pointer;
 
     &:hover {
-      background-color: #0056b3;
+      background-color: $user-profile-button-hover-color;
     }
+  }
+
+  .custom-alert {
+    background-color: $user-profile-error-background-color;
+    color: $user-profile-error-text-color;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+    border: 1px solid #f5c6cb;
+  }
 }
 
-.custom-alert {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 10px;
-  border-radius: 4px;
-  margin-top: 10px;
-  font-size: 14px;
-  border: 1px solid #f5c6cb;
-}
-
-}
-
-.icon-pencil{
+.icon-pencil {
   margin-left: 10px;
-}*/
+}

@@ -1,68 +1,73 @@
-/*@import "~@fortawesome/fontawesome-free/css/all.css";
+@import "~@fortawesome/fontawesome-free/css/all.css";
 
-.blog-detail{
+.blog-detail {
   max-width: 700px;
   margin: 0 auto;
   padding: 20px;
-}
 
-.blog-detail-title{
-  font-weight: bolder;
-  font-size: 40px;
-}
+  &-title {
+    font-weight: bolder;
+    font-size: 40px;
+  }
 
-.blog-detail-content{
-  font-size: 20px;
-  line-height: 1.5;
-}
+  &-content {
+    font-size: 20px;
+    line-height: 1.5;
+  }
 
-.comments-divider {
-  border-top: 1px solid #ccc;
-  margin-top: 10px;
-}
+  &-comments {
+    &-divider {
+      border-top: 1px solid #ccc;
+      margin-top: 10px;
+    }
 
-.comment-form .form-group {
-  width: 100%;
-  margin-bottom: 10px;
-}
+    &-form {
+      .form-group {
+        width: 100%;
+        margin-bottom: 10px;
+      }
 
-.comment-form .sendComment {
-  align-self: flex-end;
-}
+      .sendComment {
+        align-self: flex-end;
+      }
 
-.textarea-comment{
-  width: 100%;
-}
+      .textarea-comment {
+        width: 100%;
+      }
 
-button[type="submit"] {
-  background-color: #007bff;
-  color: #fff;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 18px;
-  cursor: pointer;
+      button[type="submit"] {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
 
-  &:hover {
-    background-color: #0056b3;
+        &:hover {
+          background-color: #0056b3;
+        }
+      }
+    }
+
+    .comment {
+      margin-bottom: 20px;
+    }
+
+    .sendComment {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      align-self: flex-end;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
   }
 }
-.comment {
-  margin-bottom: 20px;
-}
-
-.sendComment{
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  cursor: pointer;
-  align-self: flex-end;
-}
-
-hr {
-  border: none;
-  border-top: 1px solid #ccc;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}*/
