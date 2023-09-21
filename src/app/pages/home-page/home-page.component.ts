@@ -22,7 +22,6 @@ export class HomePageComponent {
 
   ngOnInit() {
     this.articleService.getArticles().subscribe((res: article[]) => {
-      console.log('res ', res)
       this.articles = res;
     });
   }
@@ -36,7 +35,6 @@ export class HomePageComponent {
 
     if (content !== '') {
       this.commentService.createComment(blogId, content).subscribe((comment) => {
-        console.log('comment ', comment)
         this.newComment.content = '';
       });
     }

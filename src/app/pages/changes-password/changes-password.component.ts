@@ -19,7 +19,6 @@ export class ChangesPasswordComponent {
 
   ngOnInit() {
     this.userService.getUsername().subscribe((res: any) => {
-      console.log('res ', res._id)
       this.username = res.name
       this.changePasswordForm.patchValue({
         _id: res._id
@@ -62,10 +61,7 @@ export class ChangesPasswordComponent {
         this.updateUser()
       }
     }, (error: any) => {
-      console.log('err', error. message)
-      console.log('err', error)
       if(error.error.message === "Invalid password"){
-        console.log('err', error. message)
         this.errorPasswordMessage = 'Contraseña incorrecta. Intente de nuevo.', error;
       }
     })
@@ -75,9 +71,7 @@ export class ChangesPasswordComponent {
     const user = {
       password : this.newPassword.value
     }
-    console.log('_id', this._id)
     this.userService.updateUserPassword(this._id.value, user).subscribe((user: user) => {
-      console.log('comment ', user)
       if(user){
         Swal.fire({
           position: 'top-end',

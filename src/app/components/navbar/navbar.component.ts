@@ -30,7 +30,6 @@ export class NavbarComponent {
   }
 
   toggleMenu() {
-    console.log('toggle', this.username)
       this.isMenuOpen = !this.isMenuOpen;
   }
 

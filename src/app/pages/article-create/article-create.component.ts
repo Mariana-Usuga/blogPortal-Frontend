@@ -20,13 +20,12 @@ export class ArticleCreateComponent {
   ngOnInit(): void {
     this.isLogged = this.userService.isAuthenticated();
     if(!this.isLogged){
-      
+
     }
   }
 
   createBlog() {
     this.articleService.postArticle(this.blogData).subscribe((response) => {
-      console.log('Blog creado:', response);
       if(response){
         Swal.fire({
           position: 'top-end',

@@ -16,7 +16,6 @@ export class UserService {
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem('token');
-    console.log('toke ', token)
     this.valorCompartido.next(!!token);
     return !!token;
   }

@@ -47,7 +47,6 @@ export class RegistrationComponent {
       password: this.password.value
     }
     this.userService.postUser(newUser).subscribe((user: user) => {
-      console.log('comment ', user)
       if(user){
         this.router.navigate(['/login']); 
       }

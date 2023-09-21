@@ -30,7 +30,6 @@ export class LoginComponent {
       password: this.formUser.value.password
     }
     this.userService.loginUser(user).subscribe((token: any) => {
-      console.log('comment ', token)
       localStorage.setItem('token', token.JWT);
       if(token.JWT){
         this.router.navigate(['/']);

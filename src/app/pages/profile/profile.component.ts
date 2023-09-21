@@ -60,7 +60,6 @@ export class ProfileComponent {
       email: this.email.value,
     }
     this.userService.updateUser(this._id.value, updateUser).subscribe((user: any) => {
-      console.log('comment ', user)
       if(user){
         Swal.fire({
           position: 'top-end',

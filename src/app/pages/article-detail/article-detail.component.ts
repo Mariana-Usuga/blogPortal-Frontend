@@ -37,9 +37,7 @@ export class ArticleDetailComponent {
       this.blogId = params['id'];
       this.articleService.getArticleById(this.blogId).subscribe((data: article) => {
         this.blogDetails = data;
-        //data.comments.reverse();
         this.blogDetails.comments = data.comments?.slice().reverse();
-        console.log('data ', data)
       });
     });
   }
