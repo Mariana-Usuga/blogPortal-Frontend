@@ -33,10 +33,11 @@ export class ArticleDetailComponent {
   }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params) => {
+    this.route.params.subscribe((params: any) => {
       this.blogId = params['id'];
       this.articleService.getArticleById(this.blogId).subscribe((data: article) => {
         this.blogDetails = data;
+        console.log('data ', data.comments)
         this.blogDetails.comments = data.comments?.slice().reverse();
       });
     });
@@ -47,7 +48,7 @@ export class ArticleDetailComponent {
       if (this.commentForm.valid) {
         const commentContent = this.commentForm.value.content;
         this.commentService.createComment(this.blogId, commentContent).subscribe((response: comment) => {
-          this.userService.getName().subscribe((valor) => {
+          this.userService.getName().subscribe((valor: any) => {
             this.authorName = valor
           })
           this.blogDetails = {...this.blogDetails, 
@@ -56,6 +57,7 @@ export class ArticleDetailComponent {
             } }, 
               ...(this.blogDetails.comments || [])]}
           this.commentForm.reset();
+          console.log('this.blogDetails ', this.blogDetails)
         });
       }
     } else {

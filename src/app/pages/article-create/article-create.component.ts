@@ -25,7 +25,7 @@ export class ArticleCreateComponent {
   }
 
   createBlog() {
-    this.articleService.postArticle(this.blogData).subscribe((response) => {
+    this.articleService.postArticle(this.blogData).subscribe((response: any) => {
       if(response){
         Swal.fire({
           position: 'top-end',
