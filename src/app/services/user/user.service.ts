@@ -23,15 +23,16 @@ export class UserService {
   }
 
   postUser(newUser: user): Observable<user>{
+    console.log(this.apiUrl)
     return this.http.post<user>(`${this.apiUrl}/api/user`, newUser);
   }
 
   updateUser(id: any, newUser: user): Observable<user>{
-    return this.http.patch<user>(`${this.apiUrl}/api/user/${id}`, newUser);
+    return this.http.put<user>(`${this.apiUrl}/api/user/${id}`, newUser);
   }
 
   updateUserPassword(id: any, newUser: user): Observable<user>{
-    return this.http.patch<user>(`${this.apiUrl}/api/user/password/${id}`, newUser);
+    return this.http.put<user>(`${this.apiUrl}/api/user/password/${id}`, newUser);
   }
 
   loginUser(user: userLogin): any{
