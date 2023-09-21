@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { userLogin } from 'src/app/model/login.interface';
 import { user } from 'src/app/model/user.interface';
-import { environment } from 'src/enviroments/environment.prod';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
